@@ -16,26 +16,23 @@
 	public var cantidad:Number;
 	public var horas;
 	
-	
 	public function Artefacto(datos:Object) {
-			this.codigo 	= datos.codigo;
-			this.nombre 	= datos.nombre;
-			this.tipo   	= datos.tipo;
-			this.cantidad = 0;
-			this.horas    = 0;
+		this.codigo 	= datos.codigo;
+		this.nombre 	= datos.nombre;
+		this.tipo   	= datos.tipo;
+		this.cantidad = 0;
+		this.horas    = 0;
 			
-			if(datos.es24Horas == undefined)
-			  this.es24Horas = false;
-			
-			if(datos.periodoHoras == undefined)	//ej. cafetera = 15 minutos = 0.25
-			  this.periodoHoras = 1;
-			
-			if(datos.es24Horas == true) {
-			  this.es24Horas = true;
-				this.horas     = 24;		//de prepo
-			}
-			
-			eval("_root."+this.codigo+"_cantidad").text = this.cantidad;
+		if(datos.es24Horas == undefined)
+		  this.es24Horas = false;
+		
+		if(datos.periodoHoras == undefined)	//ej. cafetera = 15 minutos = 0.25
+		  this.periodoHoras = 1;
+		
+		if(datos.es24Horas == true) {
+		  this.es24Horas = true;
+			this.horas     = 24;		//de prepo
+		}
 	}
 	
 	public function getTipo():String {
