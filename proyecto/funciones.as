@@ -1,6 +1,7 @@
 ﻿for(var i:String in datos)
 {
 	var artefacto = datos[i];
+	
 	//cantidades
 	var texto_cantidad 	 	= eval(artefacto.codigo + "_cantidad");
 	var btn_cantidad_mas    = eval(artefacto.codigo + "_cantidad_mas");
@@ -8,14 +9,18 @@
 	
 	//horas
 	var texto_horas 	 	= eval(artefacto.codigo + "_horas");
-	var btn_horas_mas    = eval(artefacto.codigo + "_horas_mas");
-	var btn_horas_menos  = eval(artefacto.codigo + "_horas_menos");
+	var btn_horas_mas    	= eval(artefacto.codigo + "_horas_mas");
+	var btn_horas_menos  	= eval(artefacto.codigo + "_horas_menos");
 
+	//inicializamos todos los textboxes en cero
+	texto_cantidad.text = 0;
+	texto_horas.text    = 0;
 	
 	btn_cantidad_mas.onRelease = function() {
 		var art = this._name.substr(0, this._name.length - 13);
 		datos[art].incrementarCantidad();
 		texto_cantidad.text = datos[art].cantidad.toString();
+		trace("va");
 		//recalcular
 	}
 	
