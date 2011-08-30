@@ -1,47 +1,30 @@
-﻿for(var i:String in datos)
-{
-	var artefacto = datos[i];
+﻿for(var cod:String in datos) {
 	
-	//cantidades
-	var texto_cantidad 	 	= eval(artefacto.codigo + "_cantidad");
-	var btn_cantidad_mas    = eval(artefacto.codigo + "_cantidad_mas");
-	var btn_cantidad_menos  = eval(artefacto.codigo + "_cantidad_menos");
-	
-	//horas
-	var texto_horas 	 	= eval(artefacto.codigo + "_horas");
-	var btn_horas_mas    	= eval(artefacto.codigo + "_horas_mas");
-	var btn_horas_menos  	= eval(artefacto.codigo + "_horas_menos");
-
 	//inicializamos todos los textboxes en cero
-	texto_cantidad.text = 0;
-	texto_horas.text    = 0;
-	
-	btn_cantidad_mas.onRelease = function() {
-		var art = this._name.substr(0, this._name.length - 13);
+	_root[cod + "_cantidad"].text = 0;
+	_root[cod + "_horas"].text    = 0;
+
+	_root[cod + "_cantidad_mas"].onRelease = function() {
+		var art = this._name.substr(0, this._name.length - length("_cantidad_mas"));
 		datos[art].incrementarCantidad();
-		texto_cantidad.text = datos[art].cantidad.toString();
-		trace("va");
-		//recalcular
+		_root[art + "_cantidad"].text = datos[art].cantidad.toString();
 	}
 	
-	btn_cantidad_menos.onRelease = function() {
-		var art = this._name.substr(0, this._name.length - 15);
+	_root[cod + "_cantidad_menos"].onRelease = function() {
+		var art = this._name.substr(0, this._name.length - length("_cantidad_menos"));
 		datos[art].decrementarCantidad();
-		texto_cantidad.text = datos[art].cantidad.toString();
-		//recalcular
+		_root[art + "_cantidad"].text = datos[art].cantidad.toString();
 	}
 	
-	btn_horas_mas.onRelease = function() {
-		var art = this._name.substr(0, this._name.length - 10);
+	_root[cod + "_horas_mas"].onRelease = function() {
+		var art = this._name.substr(0, this._name.length - length("_horas_mas"));
 		datos[art].incrementarHoras();
-		texto_horas.text = datos[art].horas.toString();
-		//recalcular
+		_root[art + "_horas"].text = datos[art].getHorasMinutos();
 	}
 	
-	btn_horas_menos.onRelease = function() {
-		var art = this._name.substr(0, this._name.length - 12);
+	_root[cod + "_horas_menos"].onRelease = function() {
+		var art = this._name.substr(0, this._name.length - length("_horas_menos"));
 		datos[art].decrementarHoras();
-		texto_horas.text = datos[art].horas.toString();
-		//recalcular
+		_root[art + "_horas"].text = datos[art].getHorasMinutos();
 	}
 }

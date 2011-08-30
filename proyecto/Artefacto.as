@@ -10,24 +10,26 @@
 	public var nombre:String;
 	public var tipo:Number;
 	public var es24Horas:Boolean;
-	public var periodoHoras;			// en cuanto se incrementa. Por defecto 1. Cafetera: 0.25 (15 min.)
+	public var periodoHoras:Number;			// en cuanto se incrementa. Por defecto 1. Cafetera: 0.25 (15 min.)
 	
 	//estas propiedades serían las únicas seteables por el flash (desde la interfaz)
 	public var cantidad:Number;
-	public var horas;
+	public var horas:Number;
 	
 	public function Artefacto(datos:Object) {
-		this.codigo 	= datos.codigo;
-		this.nombre 	= datos.nombre;
-		this.tipo   	= datos.tipo;
-		this.cantidad = 0;
-		this.horas    = 0;
+		this.codigo 		= datos.codigo;
+		this.nombre 		= datos.nombre;
+		this.tipo   		= datos.tipo;
+		this.cantidad 		= 0;
+		this.horas    		= 0;
+		this.es24Horas	 	= false;
+		this.periodoHoras	= 1;
 			
-		if(datos.es24Horas == undefined)
-		  this.es24Horas = false;
+		if(datos.es24Horas != undefined)
+		  this.es24Horas = datos.es24Horas;
 		
-		if(datos.periodoHoras == undefined)	//ej. cafetera = 15 minutos = 0.25
-		  this.periodoHoras = 1;
+		if(datos.periodoHoras != undefined)	//ej. cafetera = 15 minutos = 0.25
+			this.periodoHoras = datos.periodoHoras;
 		
 		if(datos.es24Horas == true) {
 		  this.es24Horas = true;
@@ -43,25 +45,20 @@
 	}
 	
 	public function incrementarCantidad():Void {
-		this.cantidad = this.cantidad + 1;
-		eval("_root."+this.codigo+"_cantidad").text = this.cantidad;
-		
+		this.cantidad++;
 	}
 	
 	public function decrementarCantidad():Void {
 		if(this.cantidad > 0)
-		  this.cantidad = this.cantidad - 1;
-		
-		eval("_root."+this.codigo+"_cantidad").text = this.cantidad;
+		  this.cantidad--;
 	}
 	
 	public function incrementarHoras():Boolean {
 		if(this.es24Horas == true)
 		  return false;
-			
+
 		if(this.horas < 24)
 		  this.horas += this.periodoHoras;
-		
 		return true;
 	}
 	
@@ -73,5 +70,20 @@
 		  this.horas -= this.periodoHoras;
 		
 		return true;
+	}
+	
+	public function getHorasMinutos():String {
+		if(this.periodoHoras != 1)
+		{
+			var hm:String = Math.floor(this.horas).toString();
+			var num = this.horas;
+			num -= Math.floor(num);
+			num *= 60;
+		
+			hm = hm.concat(":", num.toString());
+			return hm;
+		}
+		else
+			return this.horas.toString();
 	}
 }
