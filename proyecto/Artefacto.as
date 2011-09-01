@@ -11,6 +11,7 @@
 	public var tipo:Number;
 	public var es24Horas:Boolean;
 	public var periodoHoras:Number;			// en cuanto se incrementa. Por defecto 1. Cafetera: 0.25 (15 min.)
+	public var consumo:Number;				// consumo horario de gas o energia electrica (segun el tipo)
 	
 	//estas propiedades serían las únicas seteables por el flash (desde la interfaz)
 	public var cantidad:Number;
@@ -20,10 +21,12 @@
 		this.codigo 		= datos.codigo;
 		this.nombre 		= datos.nombre;
 		this.tipo   		= datos.tipo;
-		this.cantidad 		= 0;
-		this.horas    		= 0;
 		this.es24Horas	 	= false;
 		this.periodoHoras	= 1;
+		this.consumo		= datos.consumo;
+		this.cantidad 		= 0;
+		this.horas    		= 0;
+		
 			
 		if(datos.es24Horas != undefined)
 		  this.es24Horas = datos.es24Horas;
