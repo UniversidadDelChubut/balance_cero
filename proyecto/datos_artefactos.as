@@ -1,5 +1,5 @@
 ﻿var datos = {
-	heladera_freezer: 	new Artefacto({codigo: 'heladera_freezer', 		tipo: Artefacto.TIPO_ELEC, consumo: 60.87, es24hs: true,}),
+	heladera_freezer: 	new Artefacto({codigo: 'heladera_freezer', 		tipo: Artefacto.TIPO_ELEC, consumo: 60.87, es24hs: true}),
 	cafetera_electrica: new Artefacto({codigo: 'cafetera_electrica',	tipo: Artefacto.TIPO_ELEC, consumo: 263, periodoHoras: 0.25}),
 	horno_microondas: 	new Artefacto({codigo: 'horno_microondas', 		tipo: Artefacto.TIPO_ELEC, consumo: 234, periodoHoras: 0.25}),
 	horno_gas: 			new Artefacto({codigo: 'horno_gas', 			tipo: Artefacto.TIPO_GAS,  consumo: 157}),
@@ -11,6 +11,6 @@
 	licuadora: 			new Artefacto({codigo: 'licuadora', 			tipo: Artefacto.TIPO_ELEC, consumo: 110, periodoHoras: 0.25}),
 	procesadora: 		new Artefacto({codigo: 'procesadora', 			tipo: Artefacto.TIPO_ELEC, consumo: 146, periodoHoras: 0.25}),
 	extractor_aire: 	new Artefacto({codigo: 'extractor_aire', 		tipo: Artefacto.TIPO_ELEC, consumo: 9}),
-	calefactor_cocina: 	new Artefacto({codigo: 'calefactor_cocina', 	tipo: Artefacto.TIPO_GAS,  consumo: {3000c: 59, 4000c: 78, 5000c: 98}}),
-	lampara_cocina: 	new Artefacto({codigo: 'lampara1_cocina', 		tipo: Artefacto.TIPO_ELEC, consumo: {5w: 9, 6w: 2, 8w: 2, 9w: x, 11w: x, 12w: x, 14w: x, 15w: x, 18w: x, 23w: x, 24w: x}}),
+	calefactor_cocina: 	new Artefacto({codigo: 'calefactor_cocina', 	tipo: Artefacto.TIPO_GAS,  consumo: {C3000: 59, C4000: 78, C5000: 98}}),
+	lampara_cocina: 	new Artefacto({codigo: 'lampara1_cocina', 		tipo: Artefacto.TIPO_ELEC, consumo: {W5: 9, W6: 2, W8: 2, W9: 2, W11: 2, W12: 2, W14: 2, W15: 2, W18: 2, W23: 2, W24: 2}})
 };

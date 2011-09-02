@@ -8,6 +8,7 @@
 		var art = this._name.substr(0, this._name.length - length("_cantidad_mas"));
 		datos[art].incrementarCantidad();
 		_root[art + "_cantidad"].text = datos[art].cantidad.toString();
+		actualizarTotales(datos[art]);
 	}
 	
 	_root[cod + "_cantidad_menos"].onRelease = function() {
@@ -27,4 +28,8 @@
 		datos[art].decrementarHoras();
 		_root[art + "_horas"].text = datos[art].getHorasMinutos();
 	}
+}
+
+function actualizarTotales(obj) {
+	trace(obj.codigo);
 }
