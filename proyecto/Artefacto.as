@@ -2,7 +2,7 @@
 	//esta, aunque no lo crean, es la forma de declarar CONSTANTES (si, constantes) en AS 2
 	public static function get TIPO_ELEC():Number {return 1};
 	public static function get TIPO_GAS():Number {return 2};
-	public static function get COEFICIENTE_ELECTRICO():Number {return 0.0004};
+	public static function get COEFICIENTE_ELEC():Number {return 0.0004};
 	public static function get COEFICIENTE_GAS():Number {return 0.0015};
 	
 	//estas serian las propiedades de las instancias
@@ -12,6 +12,7 @@
 	public var es24Horas:Boolean;
 	public var periodoHoras:Number;			// en cuanto se incrementa. Por defecto 1. Cafetera: 0.25 (15 min.)
 	public var consumo:Number;				// consumo horario de gas o energia electrica (segun el tipo)
+	public var habitacion:String;
 	
 	//estas propiedades serían las únicas seteables por el flash (desde la interfaz)
 	public var cantidad:Number;
@@ -26,6 +27,7 @@
 		this.consumo		= datos.consumo;
 		this.cantidad 		= 0;
 		this.horas    		= 0;
+		this.habitacion		= datos.habitacion;
 		
 			
 		if(datos.es24Horas != undefined)
@@ -45,6 +47,13 @@
 		  return "Eléctrico";
 		else
 		  return "A gas";
+	}
+	
+	public function getCoeficiente():Number {
+		if(this.tipo == Artefacto.TIPO_ELEC)
+			return this.COEFICIENTE_ELEC;
+		else
+			return this.COEFICIENTE_GAS;
 	}
 	
 	public function incrementarCantidad():Void {
@@ -88,5 +97,9 @@
 		}
 		else
 			return this.horas.toString();
+	}
+	
+	public function calcularConsumo():Number {
+		return this.consumo * this.horas * this.cantidad * this.getCoeficiente();
 	}
 }
