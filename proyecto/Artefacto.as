@@ -3,7 +3,7 @@
 	public static function get TIPO_ELEC():Number {return 1};
 	public static function get TIPO_GAS():Number {return 2};
 	public static function get COEFICIENTE_ELEC():Number {return 0.0004};
-	public static function get COEFICIENTE_GAS():Number {return 0.0015};
+	public static function get COEFICIENTE_GAS():Number {return 0.00195};
 	
 	//estas serian las propiedades de las instancias
 	public var codigo:String;
@@ -17,6 +17,10 @@
 	//estas propiedades serían las únicas seteables por el flash (desde la interfaz)
 	public var cantidad:Number;
 	public var horas:Number;
+
+	public var calorias:Number;		// solo para calefactor
+	public var watts:Number;		// solo para lamparas electricas
+	public var consumos:Object		// solo para alguno de los 2 anteriores
 	
 	public function Artefacto(datos:Object) {
 		this.codigo 		= datos.codigo;
@@ -29,9 +33,11 @@
 		this.horas    		= 0;
 		this.habitacion		= datos.habitacion;
 		
-			
-		if(datos.es24Horas != undefined)
-		  this.es24Horas = datos.es24Horas;
+		// solo para casos específicos
+		this.calorias		= 0;
+		this.watts			= 0;
+		this.consumos		= new Object();
+
 		
 		if(datos.periodoHoras != undefined)	//ej. cafetera = 15 minutos = 0.25
 			this.periodoHoras = datos.periodoHoras;
@@ -40,6 +46,9 @@
 		  this.es24Horas = true;
 			this.horas     = 24;		//de prepo
 		}
+		
+		if(datos.consumos != undefined)
+			this.consumos = datos.consumos;
 	}
 	
 	public function getTipo():String {
@@ -51,9 +60,9 @@
 	
 	public function getCoeficiente():Number {
 		if(this.tipo == Artefacto.TIPO_ELEC)
-			return this.COEFICIENTE_ELEC;
+			return Artefacto.COEFICIENTE_ELEC;
 		else
-			return this.COEFICIENTE_GAS;
+			return Artefacto.COEFICIENTE_GAS;
 	}
 	
 	public function incrementarCantidad():Void {
@@ -100,6 +109,41 @@
 	}
 	
 	public function calcularConsumo():Number {
-		return this.consumo * this.horas * this.cantidad * this.getCoeficiente();
+		if(this.calorias > 0)		// caso calefactor
+		{
+			this.consumo = this.consumos["C" + this.calorias];
+			return Math.floor(this.consumo * this.horas * this.cantidad);
+		}
+		else if(this.watts > 0)		// caso lamparas
+		{
+			this.consumo = this.consumos["W" + this.watts];
+			return Math.floor(this.consumo * this.horas * this.cantidad);
+		}
+		else
+			return Math.floor(this.consumo * this.horas * this.cantidad);
+	}
+	
+	public function calcularCO2():Number {
+		return this.calcularConsumo() * this.getCoeficiente();
+	}
+	
+	public function cambiarCalorias():Number {
+		switch(this.calorias) {
+			case 0:
+				this.calorias = 3000;
+			break;
+			case 3000:
+				this.calorias = 4000;
+			break;
+			case 4000:
+				this.calorias = 5000;
+			break;
+			case 5000:
+				this.calorias = 3000;
+			break;
+			default:
+			trace("valor de calorias no valido");
+		}
+		return this.calorias;
 	}
 }
