@@ -31,7 +31,6 @@ for(var cod:String in datos) {
 		datos[art].incrementarCantidad();
 		_root[art + "_cantidad"].text = datos[art].cantidad.toString();
 		actualizarTotales();
-		trace(_root[cod] + "cantidad++");
 	}
 	
 	_root[cod + "_cantidad_menos"].onRelease = function() {
