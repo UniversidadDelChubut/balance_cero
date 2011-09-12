@@ -1,4 +1,7 @@
 ﻿// inicializamos los totales de habitaciones
+if(init != undefined)
+	var init = false;
+
 var habitaciones:Array = new Array(
 	'cocina', 'dorm1', 'living', 'dorm2', 'banio', 'lavadero', 'garage'
 );
@@ -6,10 +9,12 @@ var habitaciones:Array = new Array(
 var totales_hab:Object = new Object();
 
 for(var hab:String in habitaciones) {
-	totales_hab[habitaciones[hab]] = new Array(0,0);
-	_root["total_kwh_" + habitaciones[hab]].text = 0;
-	_root["total_gas_" + habitaciones[hab]].text = 0;
-	_root["calefactor_" + habitaciones[hab] + "_calorias"].text = 0;
+	if(!init){
+		totales_hab[habitaciones[hab]] = new Array(0,0);
+		_root["total_kwh_" + habitaciones[hab]].text = 0;
+		_root["total_gas_" + habitaciones[hab]].text = 0;
+		_root["calefactor_" + habitaciones[hab] + "_calorias"].text = 0;
+	}
 	
 	// logica para los calefactores
 	_root["calefactor_" + habitaciones[hab] + "_switch"].onRelease = function() {
@@ -19,39 +24,42 @@ for(var hab:String in habitaciones) {
 	}
 }
 
-// inicializacion de los artefactos
-for(var cod:String in datos) {
+function actualizarCampos() {
+	// inicializacion de los artefactos
+	for(var cod:String in datos) {
 	
-	//inicializamos todos los textboxes en cero
-	_root[cod + "_cantidad"].text = 0;
-	_root[cod + "_horas"].text    = 0;
+		//inicializamos todos los textboxes en cero
+		_root[cod + "_cantidad"].text = datos[cod].cantidad.toString();
+		
+		_root[cod + "_horas"].text    = datos[cod].getHorasMinutos();
 
-	_root[cod + "_cantidad_mas"].onRelease = function() {
-		var art = this._name.substr(0, this._name.length - length("_cantidad_mas"));
-		datos[art].incrementarCantidad();
-		_root[art + "_cantidad"].text = datos[art].cantidad.toString();
-		actualizarTotales();
-	}
-	
-	_root[cod + "_cantidad_menos"].onRelease = function() {
-		var art = this._name.substr(0, this._name.length - length("_cantidad_menos"));
-		datos[art].decrementarCantidad();
-		_root[art + "_cantidad"].text = datos[art].cantidad.toString();
-		actualizarTotales();
-	}
-	
-	_root[cod + "_horas_mas"].onRelease = function() {
-		var art = this._name.substr(0, this._name.length - length("_horas_mas"));
-		datos[art].incrementarHoras();
-		_root[art + "_horas"].text = datos[art].getHorasMinutos();
-		actualizarTotales();
-	}
-	
-	_root[cod + "_horas_menos"].onRelease = function() {
-		var art = this._name.substr(0, this._name.length - length("_horas_menos"));
-		datos[art].decrementarHoras();
-		_root[art + "_horas"].text = datos[art].getHorasMinutos();
-		actualizarTotales();
+		_root[cod + "_cantidad_mas"].onRelease = function() {
+			var art = this._name.substr(0, this._name.length - length("_cantidad_mas"));
+			datos[art].incrementarCantidad();
+			_root[art + "_cantidad"].text = datos[art].cantidad.toString();
+			actualizarTotales();
+		}
+		
+		_root[cod + "_cantidad_menos"].onRelease = function() {
+			var art = this._name.substr(0, this._name.length - length("_cantidad_menos"));
+			datos[art].decrementarCantidad();
+			_root[art + "_cantidad"].text = datos[art].cantidad.toString();
+			actualizarTotales();
+		}
+		
+		_root[cod + "_horas_mas"].onRelease = function() {
+			var art = this._name.substr(0, this._name.length - length("_horas_mas"));
+			datos[art].incrementarHoras();
+			_root[art + "_horas"].text = datos[art].getHorasMinutos();
+			actualizarTotales();
+		}
+		
+		_root[cod + "_horas_menos"].onRelease = function() {
+			var art = this._name.substr(0, this._name.length - length("_horas_menos"));
+			datos[art].decrementarHoras();
+			_root[art + "_horas"].text = datos[art].getHorasMinutos();
+			actualizarTotales();
+		}
 	}
 }
 
@@ -90,3 +98,5 @@ function actualizarTotales(obj) {
 	_root.total_residuos.text  = total_residuos;
 	_root.total_co2.text 	   = temp2;
 }
+actualizarCampos();
+init = true;

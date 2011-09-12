@@ -32,6 +32,7 @@
 	lampara_banio:		new Artefacto({codigo: 'lampara_banio', 		tipo: Artefacto.TIPO_ELEC, habitacion: 'banio', 	consumo: 4}),
 	
 	// lavadero
+	termotanque: new Artefacto({codigo: 'termotanque', tipo: Artefacto.TIPO_GAS, habitacion: 'lavadero', consumo: 471, es24Horas: true}),
 	calefactor_lavadero:new Artefacto({codigo: 'calefactor_lavadero', 	tipo: Artefacto.TIPO_GAS,  habitacion: 'lavadero', 	consumo: 0, consumos: {C3000: 59, C4000: 78, C5000: 98}}),
 	lampara_lavadero:	new Artefacto({codigo: 'lampara_lavadero', 		tipo: Artefacto.TIPO_ELEC, habitacion: 'lavadero', 	consumo: 4}),
 	
