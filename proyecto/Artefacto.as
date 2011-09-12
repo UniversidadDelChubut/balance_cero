@@ -2,8 +2,10 @@
 	//esta, aunque no lo crean, es la forma de declarar CONSTANTES (si, constantes) en AS 2
 	public static function get TIPO_ELEC():Number {return 1};
 	public static function get TIPO_GAS():Number {return 2};
+	public static function get TIPO_AUTO():Number {return 3};
 	public static function get COEFICIENTE_ELEC():Number {return 0.0004};
 	public static function get COEFICIENTE_GAS():Number {return 0.00195};
+	
 	
 	//estas serian las propiedades de las instancias
 	public var codigo:String;
