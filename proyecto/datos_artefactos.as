@@ -47,8 +47,8 @@
 	lampara_banio:		new Artefacto({codigo: 'lampara_banio',	tipo: Artefacto.TIPO_ELEC, habitacion: 'banio', 	consumo: 4}),
 	
 	// lavadero
-	termotanque_gas: new Artefacto({codigo: 'termotanque_gas', tipo: Artefacto.TIPO_GAS, habitacion: 'lavadero', 	consumo: 19.625, es24Horas: true}),
-	lavarropas_automatico:	new Artefacto({codigo: 'lavarropas_automatico', tipo: Artefacto.TIPO_ELEC, habitacion: 'lavadero', 	consumo: 66}),
+	termotanque: new Artefacto({codigo: 'termotanque_gas', tipo: Artefacto.TIPO_GAS, habitacion: 'lavadero', 	consumo: 19.625, es24Horas: true}),
+	lavarropas:	new Artefacto({codigo: 'lavarropas_automatico', tipo: Artefacto.TIPO_ELEC, habitacion: 'lavadero', 	consumo: 66}),
 	secarropas:	new Artefacto({codigo: 'secarropas', tipo: Artefacto.TIPO_ELEC, habitacion: 'lavadero',	consumo: 70}),
 	plancha:	new Artefacto({codigo: 'plancha', 		tipo: Artefacto.TIPO_ELEC, habitacion: 'lavadero', 	consumo: 219}),
 	maquina_coser:	new Artefacto({codigo: 'maquina_coser', 		tipo: Artefacto.TIPO_ELEC, habitacion: 'lavadero', 	consumo: 37}),
