@@ -68,3 +68,5 @@
 	
 	//lampara_cocina: 	new Artefacto({codigo: 'lampara_cocina', 		tipo: Artefacto.TIPO_ELEC, habitacion: 'cocina', consumo: 0, consumos: {W5: 9, W6: 2, W8: 2, W9: 2, W11: 2, W12: 2, W14: 2, W15: 2, W18: 2, W23: 2, W24: 2}})
 };
+var casa = new Casa(datos);
+delete datos;
