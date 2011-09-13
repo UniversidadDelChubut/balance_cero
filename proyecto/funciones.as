@@ -1,6 +1,4 @@
 ﻿// inicializamos los totales de habitaciones
-if(init != undefined)
-	var init = false;
 
 var habitaciones:Array = new Array(
 	'cocina', 'dorm1', 'living', 'dorm2', 'banio', 'lavadero', 'garage'
@@ -9,13 +7,11 @@ var habitaciones:Array = new Array(
 var totales_hab:Object = new Object();
 
 for(var hab:String in habitaciones) {
-	if(!init){
-		totales_hab[habitaciones[hab]] = new Array(0,0);
-		_root["total_kwh_" + habitaciones[hab]].text = 0;
-		_root["total_gas_" + habitaciones[hab]].text = 0;
-		_root["calefactor_" + habitaciones[hab] + "_calorias"].text = 0;
-	}
-	
+	totales_hab[habitaciones[hab]] = new Array(0,0);
+	_root["total_kwh_" + habitaciones[hab]].text = 0;
+	_root["total_gas_" + habitaciones[hab]].text = 0;
+	_root["calefactor_" + habitaciones[hab] + "_calorias"].text = 0;
+
 	// logica para los calefactores
 	_root["calefactor_" + habitaciones[hab] + "_switch"].onRelease = function() {
 		var calef = this._name.substr(0, this._name.length - length("_switch"));
@@ -24,7 +20,7 @@ for(var hab:String in habitaciones) {
 	}
 }
 
-function actualizarCampos() {
+function actualizarHabitacion(hab) {
 	// inicializacion de los artefactos
 	for(var cod:String in datos) {
 	
