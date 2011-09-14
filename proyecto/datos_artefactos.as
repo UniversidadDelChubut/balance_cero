@@ -16,35 +16,39 @@
 	lampara_cocina: 		new Artefacto({codigo: 'lampara_cocina', 		tipo: Artefacto.TIPO_ELEC, habitacion: 'cocina', 	consumo: 4}),
 	
 	// dorm1 (principal)
-	ventilador_techo_dorm1:	new Artefacto({codigo: 'ventilador_techo_dorm1', tipo: Artefacto.TIPO_ELEC, habitacion: 'dorm1', consumo: 11}),
-	aire_acondicionado_dorm1: new Artefacto({codigo: 'aire_acondicionado_dorm1', tipo: Artefacto.TIPO_ELEC, habitacion: 'dorm1', consumo: 185}),
-	microcomponente_dorm1: new Artefacto({codigo: 'microcomponente_dorm1', tipo: Artefacto.TIPO_ELEC, habitacion: 'dorm1', consumo: 22}),
+	ventilador_dorm1:	new Artefacto({codigo: 'ventilador_dorm1', tipo: Artefacto.TIPO_ELEC, habitacion: 'dorm1', consumo: 11}),
+	aire_acondicionado: new Artefacto({codigo: 'aire_acondicionado', tipo: Artefacto.TIPO_ELEC, habitacion: 'dorm1', consumo: 185}),
+	minicomponente_dorm1: new Artefacto({codigo: 'minicomponente_dorm1', tipo: Artefacto.TIPO_ELEC, habitacion: 'dorm1', consumo: 22}),
 	televisor_dorm1: new Artefacto({codigo: 'televisor_dorm1', tipo: Artefacto.TIPO_ELEC, habitacion: 'dorm1', consumo: 18}),
-		//radiador electrico, caloventor...
+	caloventor: new Artefacto({codigo: 'caloventor', tipo: Artefacto.TIPO_ELEC, habitacion: 'dorm1', consumo: 8}),
+	radiador_electrico: new Artefacto({codigo: 'radiador_electrico', tipo: Artefacto.TIPO_ELEC, habitacion: 'dorm1', consumo: 183}),
 	calefactor_dorm1: 	new Artefacto({codigo: 'calefactor_dorm1', 		tipo: Artefacto.TIPO_GAS,  habitacion: 'dorm1', 	consumo: 0, consumos: {C3000: 59, C4000: 78, C5000: 98}}),
 	lampara_dorm1:		new Artefacto({codigo: 'lampara_dorm1', 		tipo: Artefacto.TIPO_ELEC, habitacion: 'dorm1',	 	consumo: 4}),
 	
 	// dorm2 (secundario)
-	ventilador_techo_dorm2:	new Artefacto({codigo: 'ventilador_techo_dorm2', tipo: Artefacto.TIPO_ELEC, habitacion: 'dorm1', consumo: 11}),
-	microcomponente_dorm2: new Artefacto({codigo: 'microcomponente_dorm2', tipo: Artefacto.TIPO_ELEC, habitacion: 'dorm1', consumo: 22}),
+	ventilador_dorm2:	new Artefacto({codigo: 'ventilador_dorm2', tipo: Artefacto.TIPO_ELEC, habitacion: 'dorm2', consumo: 11}),
+	minicomponente_dorm2: new Artefacto({codigo: 'minicomponente_dorm2', tipo: Artefacto.TIPO_ELEC, habitacion: 'dorm2', consumo: 22}),
 	televisor_dorm2: new Artefacto({codigo: 'televisor_dorm2', tipo: Artefacto.TIPO_ELEC, habitacion: 'dorm2', consumo: 18}),
+	computadora: new Artefacto({codigo: 'computadora', 	tipo: Artefacto.TIPO_ELEC, habitacion: 'dorm2', 	consumo: 110}),
 	calefactor_dorm2: 	new Artefacto({codigo: 'calefactor_dorm2', 		tipo: Artefacto.TIPO_GAS,  habitacion: 'dorm2', 	consumo: 0, consumos: {C3000: 59, C4000: 78, C5000: 98}}),
 	lampara_dorm2:		new Artefacto({codigo: 'lampara_dorm2', 		tipo: Artefacto.TIPO_ELEC, habitacion: 'dorm2',  	consumo: 4}),
 	
 	// living
-	ventilador_techo_living:	new Artefacto({codigo: 'ventilador_techo_living', tipo: Artefacto.TIPO_ELEC, habitacion: 'living', consumo: 11}),
+	ventilador_living:	new Artefacto({codigo: 'ventilador_living', tipo: Artefacto.TIPO_ELEC, habitacion: 'living', consumo: 11}),
 	aire_acondicionado_living: new Artefacto({codigo: 'aire_acondicionado_living', tipo: Artefacto.TIPO_ELEC, habitacion: 'living', consumo: 185}),
-	microcomponente_living: new Artefacto({codigo: 'microcomponente_living', tipo: Artefacto.TIPO_ELEC, habitacion: 'living', consumo: 22}),
-	computadora_living: new Artefacto({codigo: 'computadora_living', 	tipo: Artefacto.TIPO_ELEC, habitacion: 'living', 	consumo: 110}),
+	minicomponente_living: new Artefacto({codigo: 'minicomponente_living', tipo: Artefacto.TIPO_ELEC, habitacion: 'living', consumo: 22}),
+	consola_juegos: new Artefacto({codigo: 'consola_juegos', 	tipo: Artefacto.TIPO_ELEC, habitacion: 'living', 	consumo: 110}),
 	televisor_living: new Artefacto({codigo: 'televisor_living', tipo: Artefacto.TIPO_ELEC, habitacion: 'living', consumo: 18}),
-	reproductor_dvd: new Artefacto({codigo: 'reproductor_dvd', tipo: Artefacto.TIPO_ELEC, habitacion: 'living', consumo: 18}),
+	repro_dvd: new Artefacto({codigo: 'repro_dvd', tipo: Artefacto.TIPO_ELEC, habitacion: 'living', consumo: 18}),
 	calefactor_living: 	new Artefacto({codigo: 'calefactor_living', 	tipo: Artefacto.TIPO_GAS,  habitacion: 'living', 	consumo: 0, consumos: {C3000: 59, C4000: 78, C5000: 98}}),
 	lampara_living:		new Artefacto({codigo: 'lampara_living', 		tipo: Artefacto.TIPO_ELEC, habitacion: 'living', 	consumo: 4}),
 		
 	// baño
 	secador_pelo:		new Artefacto({codigo: 'secador_pelo',	tipo: Artefacto.TIPO_ELEC, habitacion: 'banio', consumo: 146, periodoHoras: 0.25}),
-	maquina_afeitar:	new Artefacto({codigo: 'maquina_afeitar', tipo: Artefacto.TIPO_ELEC, habitacion: 'banio', consumo: 5, periodoHoras: 0.25}),
+	plancha_pelo:		new Artefacto({codigo: 'plancha_pelo',	tipo: Artefacto.TIPO_ELEC, habitacion: 'banio', consumo: 146, periodoHoras: 0.25}),
+	afeitadora:	new Artefacto({codigo: 'afeitadora', tipo: Artefacto.TIPO_ELEC, habitacion: 'banio', consumo: 5, periodoHoras: 0.25}),
 	lampara_banio:		new Artefacto({codigo: 'lampara_banio',	tipo: Artefacto.TIPO_ELEC, habitacion: 'banio', 	consumo: 4}),
+	calefactor_banio: 	new Artefacto({codigo: 'calefactor_banio', 	tipo: Artefacto.TIPO_GAS,  habitacion: 'banio', 	consumo: 0, consumos: {C3000: 59, C4000: 78, C5000: 98}}),
 	
 	// lavadero
 	termotanque: new Artefacto({codigo: 'termotanque_gas', tipo: Artefacto.TIPO_GAS, habitacion: 'lavadero', 	consumo: 19.625, es24Horas: true}),
@@ -58,9 +62,9 @@
 	lampara_lavadero:	new Artefacto({codigo: 'lampara_lavadero', 		tipo: Artefacto.TIPO_ELEC, habitacion: 'lavadero', 	consumo: 4}),
 	
 	// garage
-	cortadora_pasto:	new Artefacto({codigo: 'cortadora_pasto', 		tipo: Artefacto.TIPO_ELEC, habitacion: 'garage', 	consumo: 183}),
+	cortapasto:	new Artefacto({codigo: 'cortapasto', 		tipo: Artefacto.TIPO_ELEC, habitacion: 'garage', 	consumo: 183}),
 	bordeadora:			new Artefacto({codigo: 'bordeadora', 			tipo: Artefacto.TIPO_ELEC, habitacion: 'garage', 	consumo: 146}),
-	tijera_electrica_podar:	new Artefacto({codigo: 'tijera_electrica_podar', 		tipo: Artefacto.TIPO_ELEC, habitacion: 'garage', 	consumo: 128}),
+	tijera_podar:	new Artefacto({codigo: 'tijera_podar', 		tipo: Artefacto.TIPO_ELEC, habitacion: 'garage', 	consumo: 128}),
 	hidrolavadora:		new Artefacto({codigo: 'hidrolavadora', 	tipo: Artefacto.TIPO_ELEC, habitacion: 'garage', 	consumo: 438}),
 	auto:				new Artefacto({codigo: 'auto',			 		tipo: Artefacto.TIPO_AUTO, habitacion: 'garage', 	consumo: 1}),
 	calefactor_garage:	new Artefacto({codigo: 'calefactor_garage', 	tipo: Artefacto.TIPO_GAS,  habitacion: 'garage', 	consumo: 0, consumos: {C3000: 59, C4000: 78, C5000: 98}}),

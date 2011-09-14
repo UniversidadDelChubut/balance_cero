@@ -57,16 +57,16 @@
 		var total_co2:Number = 0;
 		var temp:Number = 0;
 		var temp2:Number = 0;
-		
 		//reseteo los totales de las habitaciones
 		for (var hab in this.habitaciones) {
 			this.datos_hab[hab] = new Object({total_elec:0, total_gas:0});
 		}
-				
 		for (var cod in this.datos) {
 			// actualizo cantidad y horas de los artefactos
 			_root[cod+"_cantidad"].text = this.datos[cod].cantidad.toString();
 			_root[cod+"_horas"].text = this.datos[cod].getHorasMinutos();
+			_root["calefactor_"+this.datos[cod].habitacion+"_calorias"].text = this.datos["calefactor_"+this.datos[cod].habitacion].calorias;
+			
 			//calculo consumos
 			temp = this.datos[cod].calcularConsumo();
 			temp2 += this.datos[cod].calcularCO2();
