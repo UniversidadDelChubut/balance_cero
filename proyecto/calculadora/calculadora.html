@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <link rel=stylesheet href="css/estilos.css" type="text/css" />
+    <script languaje="JavaScript" src="js/utiles.js"></script>
+    <script languaje="JavaScript" src="js/arbol.js"></script>
+    <script languaje="JavaScript" src="js/plantacion.js"></script>
+    <script languaje="JavaScript" src="js/calculadora.js"></script>
+  </head>
+  <body onload="JavaScript: inicializarParametros();">
+    <div class="divContainer">
+      <fieldset class="fieldset">
+        <legend class="legendFieldset">Par&aacute;metros para el c&aacute;lculo de balance cero</legend>
+        <form name="formParametros" id="formParametros" method="post">
+          <div class="divContainer">
+            <div class="divBody">
+              <div class="divLeft" dir="ltr">
+                Cantidad de <strong>CO<sub>2</sub></strong> liberado a la atm&oacute;sfera en <strong>Toneladas</strong>:
+              </div>
+              <div class="divLeft" dir="ltr">
+                <input type="text" name="txtCarbonoLiberado" id="txtCarbonoLiberado" onkeypress="JavaScript:if(parametrosValidos(event)) { totalizarTnsCapturadasPlantaciones();actualizarDivEspecies(); }" size="8" maxlength="12" />
+                <script languaje="JavaScript">
+                  document.formParametros.txtCarbonoLiberado.focus();
+                  document.formParametros.txtCarbonoLiberado.select();
+                </script>
+              </div>
+            </div>
+            <div class="divBody">
+              <div class="divLeft" dir="ltr">
+                Calcular el balance a:
+              </div>
+              <div class="divLeft" dir="ltr">
+                <input type="radio" name="rdoAnios" id="rdoAnios" onchange="JavaScript:if(parametrosValidosRadioButton()) { totalizarTnsCapturadasPlantaciones();actualizarDivEspecies(); }" /><span name="lblAnios1" id="lblAnios1"></span>&nbsp;a&ntilde;os&nbsp;
+                <input type="radio" name="rdoAnios" id="rdoAnios" onchange="JavaScript:if(parametrosValidosRadioButton()) { totalizarTnsCapturadasPlantaciones();actualizarDivEspecies(); }" /><span name="lblAnios2" id="lblAnios2"></span>&nbsp;a&ntilde;os&nbsp;
+                <input type="radio" name="rdoAnios" id="rdoAnios" onchange="JavaScript:if(parametrosValidosRadioButton()) { totalizarTnsCapturadasPlantaciones();actualizarDivEspecies(); }" /><span name="lblAnios3" id="lblAnios3"></span>&nbsp;a&ntilde;os&nbsp;
+                <input type="radio" name="rdoAnios" id="rdoAnios" onchange="JavaScript:if(parametrosValidosRadioButton()) { totalizarTnsCapturadasPlantaciones();actualizarDivEspecies(); }" /><span name="lblAnios4" id="lblAnios4"></span>&nbsp;a&ntilde;os
+              </div>
+            </div>
+          </div>
+        </form>
+      </fieldset>
+    </div>
+    <div id="divEspecies" class="divContainer">
+      <table width="100%" class="table">
+        <tr class="tr">
+          <th colspan="8" class="th">Informaci&oacute;n de especies a <strong><span name="lblAniosSeleccionados" id="lblAniosSeleccionados"> a&ntilde;os</strong></th>
+        </tr>
+        <tr class="tr">
+          <th class="th" nowrap>Especie</th>
+          <th class="th" nowrap>Densidad</th>
+          <th class="th" nowrap>Volumen</th>
+          <th class="th" nowrap>Peso del<br />&aacute;rbol</th>
+          <th class="th" nowrap>Carbono</th>
+          <th class="th" nowrap>Tns. <strong>CO<sub>2</sub></strong> que<br />captura el &aacute;rbol</th>
+          <th class="th" nowrap>Cantidad<br />a plantar</th>
+          <th class="th" nowrap>Tns. <strong>CO<sub>2</sub></strong><br />capturadas</th>
+        </tr>
+        <tr class="tr">
+          <td id="tdLabel" width="93%" nowrap><span name="lblNombreEspecie0" id="lblNombreEspecie0">&nbsp;</span></td>
+          <td width="1%" nowrap><span name="lblDensidadEspecie0" id="lblDensidadEspecie0">&nbsp;</span></td>
+          <td width="1%" nowrap><span name="lblVolumenEspecie0" id="lblVolumenEspecie0">&nbsp;</span></td>
+          <td width="1%" nowrap><span name="lblPesoEspecie0" id="lblPesoEspecie0">&nbsp;</span></td>
+          <td width="1%" nowrap><span name="lblCarbonoEspecie0" id="lblCarbonoEspecie0">&nbsp;</span></td>
+          <td width="1%" nowrap><span name="lblTnsCO2CapturaEspecie0" id="lblTnsCO2CapturaEspecie0">&nbsp;</span></td>
+          <td width="1%" nowrap>
+            <div class="divRight">
+              <div><img src="imagenes/incrementar.gif" border="0" onclick="JavaScript: incrementarPlantacion(0);" /></div>
+              <div><img src="imagenes/decrementar.gif" border="0" onclick="JavaScript: decrementarPlantacion(0);" /></div>
+            </div>
+            <div class="divRight"><span name="lblCantidadPlantas0" id="lblCantidadPlantas0">&nbsp;</span></div>
+          </td>
+          <td width="1%" nowrap><span name="lblCantidadTnsCO2CapturadasPlantas0" id="lblCantidadTnsCO2CapturadasPlantas0">&nbsp;</span></td>
+        </tr>
+        <tr class="tr">
+          <td id="tdLabel" width="93%" nowrap><span name="lblNombreEspecie1" id="lblNombreEspecie1">&nbsp;</span></td>
+          <td width="1%" nowrap><span name="lblDensidadEspecie1" id="lblDensidadEspecie1">&nbsp;</span></td>
+          <td width="1%" nowrap><span name="lblVolumenEspecie1" id="lblVolumenEspecie1">&nbsp;</span></td>
+          <td width="1%" nowrap><span name="lblPesoEspecie1" id="lblPesoEspecie1">&nbsp;</span></td>
+          <td width="1%" nowrap><span name="lblCarbonoEspecie1" id="lblCarbonoEspecie1">&nbsp;</span></td>
+          <td width="1%" nowrap><span name="lblTnsCO2CapturaEspecie1" id="lblTnsCO2CapturaEspecie1">&nbsp;</span></td>
+          <td width="1%" nowrap>
+            <div class="divRight">
+              <div><img src="imagenes/incrementar.gif" border="0" onclick="JavaScript: incrementarPlantacion(1);" /></div>
+              <div><img src="imagenes/decrementar.gif" border="0" onclick="JavaScript: decrementarPlantacion(1);" /></div>
+            </div>
+            <div class="divRight"><span name="lblCantidadPlantas1" id="lblCantidadPlantas1">&nbsp;</span></div>
+          </td>
+          <td width="1%" nowrap><span name="lblCantidadTnsCO2CapturadasPlantas1" id="lblCantidadTnsCO2CapturadasPlantas1">&nbsp;</span></td>
+        </tr>
+        <tr class="tr">
+          <td id="tdLabel" width="93%" nowrap><span name="lblNombreEspecie2" id="lblNombreEspecie2">&nbsp;</span></td>
+          <td width="1%" nowrap><span name="lblDensidadEspecie2" id="lblDensidadEspecie2">&nbsp;</span></td>
+          <td width="1%" nowrap><span name="lblVolumenEspecie2" id="lblVolumenEspecie2">&nbsp;</span></td>
+          <td width="1%" nowrap><span name="lblPesoEspecie2" id="lblPesoEspecie2">&nbsp;</span></td>
+          <td width="1%" nowrap><span name="lblCarbonoEspecie2" id="lblCarbonoEspecie2">&nbsp;</span></td>
+          <td width="1%" nowrap><span name="lblTnsCO2CapturaEspecie2" id="lblTnsCO2CapturaEspecie2">&nbsp;</span></td>
+          <td width="1%" nowrap>
+            <div class="divRight">
+              <div><img src="imagenes/incrementar.gif" border="0" onclick="JavaScript: incrementarPlantacion(2);" /></div>
+              <div><img src="imagenes/decrementar.gif" border="0" onclick="JavaScript: decrementarPlantacion(2);" /></div>
+            </div>
+            <div class="divRight"><span name="lblCantidadPlantas2" id="lblCantidadPlantas2">&nbsp;</span></div>
+          </td>
+          <td width="1%" nowrap><span name="lblCantidadTnsCO2CapturadasPlantas2" id="lblCantidadTnsCO2CapturadasPlantas2">&nbsp;</span></td>
+        </tr>
+        <tr class="tr">
+          <td id="tdLabel" width="93%" nowrap><span name="lblNombreEspecie3" id="lblNombreEspecie3">&nbsp;</span></td>
+          <td width="1%" nowrap><span name="lblDensidadEspecie3" id="lblDensidadEspecie3">&nbsp;</span></td>
+          <td width="1%" nowrap><span name="lblVolumenEspecie3" id="lblVolumenEspecie3">&nbsp;</span></td>
+          <td width="1%" nowrap><span name="lblPesoEspecie3" id="lblPesoEspecie3">&nbsp;</span></td>
+          <td width="1%" nowrap><span name="lblCarbonoEspecie3" id="lblCarbonoEspecie3">&nbsp;</span></td>
+          <td width="1%" nowrap><span name="lblTnsCO2CapturaEspecie3" id="lblTnsCO2CapturaEspecie3">&nbsp;</span></td>
+          <td width="1%" nowrap>
+            <div class="divRight">
+              <div><img src="imagenes/incrementar.gif" border="0" onclick="JavaScript: incrementarPlantacion(3);" /></div>
+              <div><img src="imagenes/decrementar.gif" border="0" onclick="JavaScript: decrementarPlantacion(3);" /></div>
+            </div>
+            <div class="divRight"><span name="lblCantidadPlantas3" id="lblCantidadPlantas3">&nbsp;</span></div>
+          </td>
+          <td width="1%" nowrap><span name="lblCantidadTnsCO2CapturadasPlantas3" id="lblCantidadTnsCO2CapturadasPlantas3">&nbsp;</span></td>
+        </tr>
+        <tr class="tr">
+          <td id="tdLabel" width="93%" nowrap><span name="lblNombreEspecie4" id="lblNombreEspecie4">&nbsp;</span></td>
+          <td width="1%" nowrap><span name="lblDensidadEspecie4" id="lblDensidadEspecie4">&nbsp;</span></td>
+          <td width="1%" nowrap><span name="lblVolumenEspecie4" id="lblVolumenEspecie4">&nbsp;</span></td>
+          <td width="1%" nowrap><span name="lblPesoEspecie4" id="lblPesoEspecie4">&nbsp;</span></td>
+          <td width="1%" nowrap><span name="lblCarbonoEspecie4" id="lblCarbonoEspecie4">&nbsp;</span></td>
+          <td width="1%" nowrap><span name="lblTnsCO2CapturaEspecie4" id="lblTnsCO2CapturaEspecie4">&nbsp;</span></td>
+          <td width="1%" nowrap>
+            <div class="divRight">
+              <div><img src="imagenes/incrementar.gif" border="0" onclick="JavaScript: incrementarPlantacion(4);" /></div>
+              <div><img src="imagenes/decrementar.gif" border="0" onclick="JavaScript: decrementarPlantacion(4);" /></div>
+            </div>
+            <div class="divRight"><span name="lblCantidadPlantas4" id="lblCantidadPlantas4">&nbsp;</span></div>
+          </td>
+          <td width="1%" nowrap><span name="lblCantidadTnsCO2CapturadasPlantas4" id="lblCantidadTnsCO2CapturadasPlantas4">&nbsp;</span></td>
+        </tr>
+        <tr class="tr">
+          <td id="tdLabel" width="93%" nowrap><span name="lblNombreEspecie5" id="lblNombreEspecie5">&nbsp;</span></td>
+          <td width="1%" nowrap><span name="lblDensidadEspecie5" id="lblDensidadEspecie5">&nbsp;</span></td>
+          <td width="1%" nowrap><span name="lblVolumenEspecie5" id="lblVolumenEspecie5">&nbsp;</span></td>
+          <td width="1%" nowrap><span name="lblPesoEspecie5" id="lblPesoEspecie5">&nbsp;</span></td>
+          <td width="1%" nowrap><span name="lblCarbonoEspecie5" id="lblCarbonoEspecie5">&nbsp;</span></td>
+          <td width="1%" nowrap><span name="lblTnsCO2CapturaEspecie5" id="lblTnsCO2CapturaEspecie5">&nbsp;</span></td>
+          <td width="1%" nowrap>
+            <div class="divRight">
+              <div><img src="imagenes/incrementar.gif" border="0" onclick="JavaScript: incrementarPlantacion(5);" /></div>
+              <div><img src="imagenes/decrementar.gif" border="0" onclick="JavaScript: decrementarPlantacion(5);" /></div>
+            </div>
+            <div class="divRight"><span name="lblCantidadPlantas5" id="lblCantidadPlantas5">&nbsp;</span></div>
+          </td>
+          <td width="1%" nowrap><span name="lblCantidadTnsCO2CapturadasPlantas5" id="lblCantidadTnsCO2CapturadasPlantas5">&nbsp;</span></td>
+        </tr>
+        <tr clas"tr">
+          <td colspan="6" nowrap>&nbsp;</td>
+          <td nowrap><span name="lblCantidadTotalPlantas" id="lblCantidadTotalPlantas">&nbsp;</span></td>
+          <td nowrap><span name="lblCantidadTotalTnsCO2Capturadas" id="lblCantidadTotalTnsCO2Capturadas">&nbsp;</span></td>
+        </tr>
+      </table>
+    </div>
+    <script languaje="JavaScript">actualizarDivEspecies();</script>
+    <div id="divEspeciesPlantadas" class="divcontainer" style="display:none;"></div>
+  </body>
+</html>

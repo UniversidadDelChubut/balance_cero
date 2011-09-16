@@ -1,0 +1,98 @@
+/* Estilos de la etiqueta DIV */
+
+.divContainer {
+  clear:both;
+}
+
+.divHeader {
+  clear:both;
+}
+
+.divBody {
+  clear:both;
+}
+
+.divFooter {
+  clear:both;
+}
+
+.divCenter {
+  clear:both;
+}
+
+.divLeft {
+  float:left;
+  text-align:left;
+  padding:2px;
+  vertical-align:top;
+}
+
+.divRight {
+  float:right;
+  text-align:left;
+  padding:2px;
+  vertical-align:top;
+}
+
+/* Estilos de la etiqueta FIELDSET */
+
+.fieldset {
+  background-color:#FFFACD;
+  padding:2px;
+  font-size:16px;
+  font-weight:normal;
+  color:#000080;
+}
+
+.legendFieldset {
+  color:#000080;
+  border-color:#000080;
+  font-size:18px;
+  font-weight:bold;
+}
+
+/* Estilos de la etiqueta TABLE */
+
+.table th {
+  border:1px solid;
+  border-color:#000080;
+  border-collapse:collapse;
+  background-color:#FFAA33;
+  padding:2px;
+  font-size:18px;
+  font-weight:bold;
+  color:#000080;
+}
+
+.table tr {
+  padding:0px;
+}
+
+.table td {
+  border:1px solid;
+  border-color:#000080;
+  background-color:#FFFACD;
+  padding:2px;
+  font-size:16px;
+  font-weight:normal;
+  color:#FF0000;
+  text-align:center;
+}
+
+#tdLabel {
+  border:1px solid;
+  border-color:#000080;
+  background-color:#FFFACD;
+  padding:2px;
+  font-size:18px;
+  font-weight:bold;
+  color:#FF0000;
+  text-align:left;
+}
+
+/* Estilos de la etiqueta INPUT */
+
+#txtCarbonoLiberado {
+  color:#000080;
+  text-align:right
+}
