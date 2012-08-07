@@ -7,3 +7,7 @@ Basado en http://www.chicos.edu.ar/ChicosEnRedasp/paginas/pagina.asp?PaginaCRID=
 
 * descargar y descomprimir paquete
 * abrir archivo dist/main.html en el navegador
+
+## Importante
+
+Aquellos que deseen hacer cambios al archivo .fla, por favor guardar los cambios en formato **flash 8**.
