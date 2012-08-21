@@ -43,7 +43,8 @@
   public function enlazarEventos() {
     for(var i = 0; i < this.anios.length; i++)
       _root["bot_"+this.anios[i]+"anios"].onRelease = function() {
-        //_root.balance_cero.anios_sel(); TODO: obtener los años
+        var an = new Number(this._name.substr(4, this._name.length-4-length("anios")));
+        _root.balance_cero.anios_sel = an;
         _root.balance_cero.actualizarTotales();
       }
   }
@@ -52,7 +53,7 @@
   public function calcularCantidadEspecies(anios, especie) {
     var total_co2 = this.total_co2_casa + total_co2_escuela;
 
-    return total_co2/especie.getTotalCarbonoCapturado(anios);
+    return Math.ceil(total_co2/especie.getTotalCarbonoCapturado(anios));
   }
   //calcularCantidadEspecies
 }

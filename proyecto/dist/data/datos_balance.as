@@ -10,7 +10,7 @@
 	
 	anios: new Array(2, 5, 10, 20),
   
-  anios_default: 5
+  anios_default: 2
 };
 
 var balance_cero = new Balance(datos_balance);
