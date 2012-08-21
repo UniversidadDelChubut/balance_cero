@@ -15,5 +15,5 @@
 	calefactor_escuela: 	new Artefacto({codigo: 'calefactor_escuela', 		tipo: Artefacto.TIPO_GAS,  habitacion: 'escuela', 	consumo: 0, consumos: {C3000: 59, C4000: 78, C5000: 98}}),
 	lampara_escuela:		new Artefacto({codigo: 'lampara_escuela', 		tipo: Artefacto.TIPO_ELEC, habitacion: 'escuela',  	consumo: 4})
 };
-var escuela = new Escuela(datos);
+var la_escuela = new Escuela(datos);
 delete datos;

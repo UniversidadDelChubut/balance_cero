@@ -1,4 +1,4 @@
-// Se crea el arraglo de objetos arbol que contiene
+// Se crea el arreglo de objetos arbol que contiene
 // la informacion de cada especie
 var especies = new Array(6);
 especies[0] = new Arbol(0,'Eucalipto',0.830,1.000);
@@ -8,7 +8,7 @@ especies[3] = new Arbol(3,'Aguaribay',0.675,0.800);
 especies[4] = new Arbol(4,'Algarrobo',0.730,0.500);
 especies[5] = new Arbol(5,'Fresno',0.450,0.400);
 
-// Se crea el arraglo de objetos plantacion que contiene
+// Se crea el arreglo de objetos plantacion que contiene
 // la informacion de cada plantacion de arboles
 var plantaciones = new Array(6);
 plantaciones[0] = new Plantacion(0,especies[0]);

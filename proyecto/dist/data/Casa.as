@@ -3,10 +3,16 @@
 	public var datos_hab:Object;
 	public var handlers:Object;
 	public var datos:Object;
+  public var total_electrico:Number;
+  public var total_gas:Number;
+  public var total_co2:Number;
+  
 	public function Casa(artefactos:Object) {
 		this.habitaciones = new Object({cocina:{}, living:{}, dorm1:{}, dorm2:{}, banio:{}, lavadero:{}, garage:{}});
 		this.datos_hab = new Object();
 		this.datos = artefactos;
+    this.total_co2 = 0;
+    
 		// inicializamos los totales de habitaciones
 		for (var hab in this.habitaciones) {
 			this.datos_hab[hab] = new Object({total_elec:0, total_gas:0});
@@ -20,31 +26,31 @@
 	public function enlazarEventos(hab:String) {
 		// logica para los calefactores
 		_root["calefactor_"+hab+"_switch"].onRelease = function() {
-			_root["calefactor_"+hab+"_calorias"].text = _root.casa.datos["calefactor_"+hab].cambiarCalorias();
-			_root.casa.actualizarTotales();
+			_root["calefactor_"+hab+"_calorias"].text = _root.la_casa.datos["calefactor_"+hab].cambiarCalorias();
+			_root.la_casa.actualizarTotales();
 		};
 		// eventos para botones de cantidad y horas
 		for (var cod in this.datos) {
 			if (this.datos[cod].habitacion == hab) {
 				_root[cod+"_cantidad_mas"].onRelease = function() {
 					var art = this._name.substr(0, this._name.length-length("_cantidad_mas"));
-					_root.casa.datos[art].incrementarCantidad();
-					_root.casa.actualizarTotales();
+					_root.la_casa.datos[art].incrementarCantidad();
+					_root.la_casa.actualizarTotales();
 				};
 				_root[cod+"_cantidad_menos"].onRelease = function() {
 					var art = this._name.substr(0, this._name.length-length("_cantidad_menos"));
-					_root.casa.datos[art].decrementarCantidad();
-					_root.casa.actualizarTotales();
+					_root.la_casa.datos[art].decrementarCantidad();
+					_root.la_casa.actualizarTotales();
 				};
 				_root[cod+"_horas_mas"].onRelease = function() {
 					var art = this._name.substr(0, this._name.length-length("_horas_mas"));
-					_root.casa.datos[art].incrementarHoras();
-					_root.casa.actualizarTotales();
+					_root.la_casa.datos[art].incrementarHoras();
+					_root.la_casa.actualizarTotales();
 				};
 				_root[cod+"_horas_menos"].onRelease = function() {
 					var art = this._name.substr(0, this._name.length-length("_horas_menos"));
-					_root.casa.datos[art].decrementarHoras();
-					_root.casa.actualizarTotales();
+					_root.la_casa.datos[art].decrementarHoras();
+					_root.la_casa.actualizarTotales();
 				};
 			}
 		}
@@ -85,8 +91,14 @@
 			//switch
 		}
 		//for
-		//actualizo campos de totales (son fijos en todas las habitaciones)
-		_root.total_electrico.text = total_electrico;
+		
+    //actualizo los datos de la clase (para ser accesibles desde afuera)
+		this.total_electrico = total_electrico;
+    this.total_gas      = total_gas;
+    this.total_co2      = temp2;
+    
+    //actualizo campos de texto (este frame)
+    _root.total_electrico.text = total_electrico;
 		_root.total_gas.text = total_gas;
 		_root.total_co2.text = temp2;
 	}
